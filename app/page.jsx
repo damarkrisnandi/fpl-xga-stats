@@ -10,7 +10,7 @@ export default async function Home() {
   elements.sort((a, b) => b.expected_goals - a.expected_goals)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="mt-24 w-7/12 sm:w-11/12">
+      <div className="mt-24 w-11/12">
         {elements.map(element => (
           <ElementCard
             { ...element }
