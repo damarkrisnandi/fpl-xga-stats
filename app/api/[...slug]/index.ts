@@ -1,6 +1,5 @@
 import { API_URL } from "../../../utils/index.js";
 import { NextApiRequest, NextApiResponse } from "next";
-import NextCors from "nextjs-cors";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     
