@@ -8,7 +8,7 @@ export default async function FilterByPosition() {
 
   let elements = bootstrap.elements;
   elements = elements.filter(o => o.element_type === 1)
-  elements.sort((a, b) => (b.expected_goals_conceded - b.goals_conceded) - (a.expected_goals_conceded - b.goals_conceded))
+  elements.sort((a, b) => (b.expected_goals_conceded - b.goals_conceded) - (a.expected_goals_conceded - a.goals_conceded))
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="mt-24 w-11/12">
