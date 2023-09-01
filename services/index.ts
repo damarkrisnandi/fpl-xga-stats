@@ -1,4 +1,4 @@
-const api_url = 'https://fpl-xga-stats.vercel.app/api';
+const api_url = 'https://fpl-league-theta.vercel.app/api';
 const managerInfoApi = `${api_url}/entry`;
 const headers = {'Content-Type': 'application/json'};
 
