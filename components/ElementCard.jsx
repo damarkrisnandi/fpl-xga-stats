@@ -135,8 +135,8 @@ export default function ElementCard(props) {
                     {
                         element_type == 1 ? (
                             <div className="flex">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>GC {goals_conceded}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>GC90 {goals_conceded_per_90}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
                             </div>
                             
                         ) : null
