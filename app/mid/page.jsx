@@ -12,7 +12,6 @@ export default async function FilterByPosition() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="mt-24 w-11/12">
-        <SelectPosition />
         {elements.map(element => (
           <ElementCard
             { ...element }
