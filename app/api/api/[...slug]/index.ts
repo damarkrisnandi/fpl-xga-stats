@@ -1,4 +1,4 @@
-import { API_URL, createResponseBody } from "@/utils";
+import { API_URL, createResponseBody } from "../../../utils/index.js";
 import { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 
