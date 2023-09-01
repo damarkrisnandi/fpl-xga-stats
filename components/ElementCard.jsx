@@ -103,20 +103,35 @@ export default function ElementCard(props) {
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | { pos[element_type] }</p>
                     <p className="mb-2 tracking-tight text-gray-900 dark:text-white"></p>
-                    <div className="flex">
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
-                    </div>
-                    <div className="flex">
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
-                        <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
-                    </div>
-                    <div className="flex">
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700: text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700: text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
-                    </div>
+                    {
+                        element_type != 1 ? (
+                            <div className="flex">
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                            </div>
+                            
+                        ) : null
+                    }
+                    {
+                        element_type != 1 ? (
+                            <div className="flex">
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
+                            </div>
+                            
+                        ) : null
+                    }
+                    {
+                        element_type != 1 ? (
+                            <div className="flex">
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700: text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700: text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
+                            </div>
+
+                        ) : null
+                    }
                     {
                         element_type == 1 ? (
                             <div className="flex">
