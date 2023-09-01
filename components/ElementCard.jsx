@@ -100,16 +100,16 @@ export default function ElementCard(props) {
             <div className={`flex items-center w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}>
                 {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h5> */}
                 <div className=''>
-                    <p className="mb-2 text-sm tracking-tight text-gray-900 "> {first_name} {second_name} </p>
-                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">{ web_name } | { pos[element_type] }</p>
+                    <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
+                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | { pos[element_type] }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">xG {expected_goals}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">xA {expected_assists}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">xG90 {expected_goals_per_90}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">xA90 {expected_assists_per_90}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
                             </div>
                             
                         ) : null
@@ -117,8 +117,8 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">G {goals_scored}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 ">A {assists}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
                             </div>
                             
                         ) : null
