@@ -103,6 +103,9 @@ export default function ElementCard(props) {
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | { pos[element_type] }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
+                    <div className="flex">
+                    <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">MP {minutes}</p>
+                    </div>
                     {
                         element_type != 1 ? (
                             <div className="flex">
