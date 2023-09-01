@@ -118,7 +118,7 @@ export default function ElementCard(props) {
                         <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${assists - expected_assists >= 0 ? 'text-green-700' : 'text-red-700'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
                     </div>
                     {
-                        element_type === 1 ? (
+                        element_type == 1 ? (
                             <div className="flex">
                                 <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${goals_scored - expected_goals >= 0 ? 'text-green-700' : 'text-red-700'}`}>GC {goals_conceded}</p>
                                 <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${assists - expected_assists >= 0 ? 'text-green-700' : 'text-red-700'}`}>GC90 {goals_conceded_per_90}</p>
@@ -128,7 +128,7 @@ export default function ElementCard(props) {
                     }
 
                     {
-                        element_type === 1 ? (
+                        element_type == 1 ? (
                             <div className="flex">
                                 <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700' : 'text-red-700'}`}>xGC - GC {(expected_goals_conceded - goals_conceded) >= 0 ? '+': ''}{expected_goals_conceded - goals_conceded}</p>
                             </div>
