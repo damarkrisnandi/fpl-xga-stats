@@ -7,7 +7,7 @@ export default async function Home() {
   const bootstrap = (await getBootstrap());
 
   const elements = bootstrap.elements;
-  elements.sort((a, b) => b.expected_goals - a.expected_goals)
+  elements.sort((a, b) => (b.goals - b.expected_goals) - (a.goals - a.expected_goals))
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="mt-24 w-11/12">
