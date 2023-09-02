@@ -4,7 +4,7 @@ const headers = {'Content-Type': 'application/json'};
 
 const getResult = (url: string) => {
     const result = new Promise((resolve, reject) => {
-        fetch(url, {})
+        fetch(url, { cache: 'no-store' })
         .then(data => {
             data.json().then(json => {
                 resolve(json)
