@@ -11,7 +11,7 @@ export default async function FilterByPosition() {
 
   let elements = bootstrap.elements;
   elements = elements.filter(o => o.element_type === 2)
-  elements.sort((a, b) => getExpectedPoints(b, nextGameWeek) - getExpectedPoints(a.nextGameWeek))
+  elements.sort((a, b) => getExpectedPoints(b, nextGameWeek) - getExpectedPoints(a, nextGameWeek))
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="mt-24 w-11/12">
