@@ -8,7 +8,7 @@ export default function TotalExpectedPtsNext(props) {
                 <div className='w-full'>
                 <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total xP Next Gameweek</p>
                 <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                    <div className="bg-green-700 text-xs font-medium text-blue-100 text-center p-0.5 rounded-full" style={{width: `100%`}}>{ `Expected: ${ totalXPoints } Pts | Actual: ${ points } Pts`}</div>
+                    <div className="bg-yellow-700 text-xs font-medium text-blue-100 text-center p-0.5 rounded-full" style={{width: `100%`}}>{ `Expected: ${ totalXPoints } Pts`}</div>
                 </div>
                 </div>
             </div>
