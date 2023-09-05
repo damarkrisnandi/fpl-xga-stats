@@ -1,7 +1,7 @@
 import SelectPosition from '../../components/SelectPosition';
 import ElementCard from '../../components/ElementCard';
 import TotalExpectedPts from '../../components/TotalExpectedPts';
-import { getBootstrap, getManagerInfo, getPicksData, getExpectedPoints } from '../../services/index';
+import { getBootstrap, getManagerInfo, getPicksData, getExpectedPoints, getFixtures } from '../../services/index';
 import Image from 'next/image';
 
 export default async function Home() {
@@ -14,28 +14,54 @@ export default async function Home() {
     const managerId = '471950';
     const manager = await getManagerInfo(managerId)
     const picksData = await getPicksData(managerId, `${manager.current_event}`);
-    // const picksFullData = [
-    //     ...picksData.picks.map(
-    //     (obj) => { return {...elements.find(
-    //         (ref) => obj.element === ref.id
-    //     ), ...obj}}
-    //     )
-    // ];
+    
+    const fixtures = Object.values(await getFixtures());
+    const currentFixtures = fixtures.filter(data => data.event === manager.current_event);
+    const haIndexData = []
+    for (let f of currentFixtures) {
+        const data = {
+            home: f.team_h,
+            away: f.team_a,
+            homeOff: teams.find(t => t.id === f.team_h).strength_attack_home,
+            homeDef: teams.find(t => t.id === f.team_h).strength_defence_home,
+            awayOff: teams.find(t => t.id === f.team_a).strength_attack_away,
+            awayDef: teams.find(t => t.id === f.team_a).strength_defence_away
+        }
 
-    // let currentPts = 0;
-    // picksFullData.map(
-    //     (o) => o.event_points * (o.multiplier)
-    // ).forEach((n) => {
-    //     currentPts += n;
-    // })
+        haIndexData.push(data);
+        // console.log(teams.find(t => t.id === f.team_h).short_name, ' v ', teams.find(t => t.id === f.team_a).short_name);
+    }
 
     let myTeam = [];
     let totalXPoints = 0;
     for (let pick of picksData.picks) {
         if (elements.find((o) => pick.element === o.id)) {
-            myTeam.push({...elements.find((o) => pick.element === o.id), multiplier: pick.multiplier})
-            const xP = getExpectedPoints(elements.find((o) => pick.element === o.id), gameWeek);
-            totalXPoints += xP * pick.multiplier;
+            const dataEl = elements.find((o) => pick.element === o.id);
+            myTeam.push({...dataEl, multiplier: pick.multiplier})
+
+            const xP = getExpectedPoints(dataEl, gameWeek);
+            const home = haIndexData.find(ha => ha.home === dataEl.team);
+            const away = haIndexData.find(ha => ha.away === dataEl.team);
+
+            const defences = [1, 2];
+            const attacks = [3, 4];
+            let haIdxValue = 1;
+            if (home) {
+                const haIdx = haIndexData.find(ha => ha.home === dataEl.team);
+                if (attacks.includes(dataEl.element_type)) {
+                    haIdxValue = haIdx.homeOff / haIdx.awayDef;
+                } else {
+                    haIdxValue = haIdx.homeDef / haIdx.awayOff;
+                }
+            } else {
+                const haIdx = haIndexData.find(ha => ha.away === dataEl.team);
+                if (attacks.includes(dataEl.element_type)) {
+                    haIdxValue = haIdx.awayOff / haIdx.homeDef;
+                } else {
+                    haIdxValue = haIdx.awayDef / haIdx.homeOff;
+                }
+            }
+            totalXPoints += xP * pick.multiplier * haIdxValue;
         }
     }
 
@@ -45,7 +71,7 @@ export default async function Home() {
         <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="mt-24 w-11/12">
             <TotalExpectedPts 
-                totalXPoints={totalXPoints}
+                totalXPoints={totalXPoints.toFixed(2)}
                 points={manager.summary_event_points}
             />
             {myTeam.map(element => (
