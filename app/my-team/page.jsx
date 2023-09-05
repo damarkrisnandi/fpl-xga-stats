@@ -2,7 +2,7 @@ import SelectPosition from '../../components/SelectPosition';
 import ElementCard from '../../components/ElementCard';
 import TotalExpectedPts from '../../components/TotalExpectedPts';
 import TotalExpectedPtsNext from '../../components/TotalExpectedPtsNext';
-import { getBootstrap, getManagerInfo, getPicksData, getExpectedPoints, getFixtures, getTotalXPMultiplies } from '../../services/index';
+import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies } from '../../services/index';
 import Image from 'next/image';
 
 export default async function Home() {

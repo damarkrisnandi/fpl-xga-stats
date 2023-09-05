@@ -187,8 +187,19 @@ export default function ElementCard(props) {
 
                     <div className="flex font-semibold">
                         <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xP {(xP).toFixed(2)}</p>
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>P {event_points}</p>
+                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>P {event_points}</p>                
+                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points - xP) >= 0 ? '+' : ''}${(event_points - xP).toFixed(2)})`}</p>
                     </div>
+
+                    {
+                        multiplier ? (
+                            <div className="flex font-semibold">
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>TxP {(xP * multiplier).toFixed(2)}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>TP {event_points * multiplier}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points - xP) >= 0 ? '+' : ''}${((event_points - xP) * multiplier).toFixed(2)})`}</p>
+                            </div>
+                        ) : null
+                    }
                 </div>
             </div>
         </Link>
