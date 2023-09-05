@@ -69,3 +69,38 @@ export const leagueHistory = [
 //         ...currentLeague
 //     }
 // }
+
+export const getExpectedPoints = (element, gameWeek) => {
+    let xP = 0;
+    const {element_type, bonus, expected_goals_per_90, expected_assists_per_90, starts_per_90, clean_sheets_per_90} = element;
+    if (element_type === 4) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + pMP + (bonus/gameWeek); 
+    }
+    if (element_type === 3) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 1;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+    if (element_type === 2) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 4;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+
+    if (element_type === 1) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 5;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+
+    return xP;
+}

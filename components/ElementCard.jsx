@@ -6,6 +6,8 @@ import Link from 'next/link'
 export default function ElementCard(props) {
     const {
         assists,
+        bps,
+        bonus,
         chance_of_playing_next_round,
         chance_of_playing_this_round,
         clean_sheets,
@@ -85,13 +87,67 @@ export default function ElementCard(props) {
         value_season,
         web_name,
         yellow_cards,
+
+        // reference data
+        gameWeek,
+        nextGameWeek, 
+        teams,
+
+        //data pick
+        multiplier
     } = props;
+    console.log(id, multiplier)
     const pos = {
         1:'GKP',
         2: 'DEF',
         3: 'MID',
         4: 'FWD'
     }
+    let xP = 0;
+    if (element_type === 4) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + pMP + (bonus/gameWeek); 
+    }
+    if (element_type === 3) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 1;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+    if (element_type === 2) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 4;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+
+    if (element_type === 1) {
+        const xPG = expected_goals_per_90 * 4;
+        const xPA = expected_assists_per_90 * 3;
+        const xCS = clean_sheets_per_90 * 5;
+        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
+        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
+    }
+    
+
+    const playerStatus = (multi) => {
+        let status = '';
+        if (multi === 1) {
+            status = 'Played';
+        } else if (multi === 2) {
+            status = 'Captain';
+        } else if (multi === 3) {
+            status = 'Triple Captain'
+        } else {
+            status = 'Benched';
+        }
+        return status;
+    }
+
     return (
         
         <Link href={`#`} className={`flex flex-col items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700  dark:hover:bg-gray-700 mb-2`}>
@@ -103,16 +159,17 @@ export default function ElementCard(props) {
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | { pos[element_type] }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
+                    <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> { multiplier !== undefined && multiplier >= 0 ? playerStatus(multiplier) : '' } </p>
                     <div className="flex">
                     <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">MP {minutes}</p>
                     </div>
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
                             </div>
                             
                         ) : null
@@ -120,8 +177,8 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
-                                <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
                             </div>
                             
                         ) : null
@@ -129,17 +186,18 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
+                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
+                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
                             </div>
 
                         ) : null
                     }
+                    
                     {
                         element_type == 1 ? (
                             <div className="flex">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
+                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
+                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
                             </div>
                             
                         ) : null
@@ -148,11 +206,16 @@ export default function ElementCard(props) {
                     {
                         element_type == 1 ? (
                             <div className="flex">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
+                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
                             </div>
                             
                         ) : null
                     }
+
+                    <div className="flex font-semibold">
+                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xP {(xP).toFixed(2)}</p>
+                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>P {event_points}</p>
+                    </div>
                 </div>
             </div>
         </Link>
