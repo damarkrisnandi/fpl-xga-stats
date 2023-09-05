@@ -2,6 +2,7 @@
 import Image from "next/image";
 // import Chevron from "./chevron";
 import Link from 'next/link'
+import { getExpectedPoints } from '../services/index.ts'
 
 export default function ElementCard(props) {
     const {
@@ -96,43 +97,13 @@ export default function ElementCard(props) {
         //data pick
         multiplier
     } = props;
-    console.log(id, multiplier)
     const pos = {
         1:'GKP',
         2: 'DEF',
         3: 'MID',
         4: 'FWD'
     }
-    let xP = 0;
-    if (element_type === 4) {
-        const xPG = expected_goals_per_90 * 4;
-        const xPA = expected_assists_per_90 * 3;
-        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
-        xP = xPG + xPA + pMP + (bonus/gameWeek); 
-    }
-    if (element_type === 3) {
-        const xPG = expected_goals_per_90 * 4;
-        const xPA = expected_assists_per_90 * 3;
-        const xCS = clean_sheets_per_90 * 1;
-        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
-        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
-    }
-    if (element_type === 2) {
-        const xPG = expected_goals_per_90 * 4;
-        const xPA = expected_assists_per_90 * 3;
-        const xCS = clean_sheets_per_90 * 4;
-        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
-        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
-    }
-
-    if (element_type === 1) {
-        const xPG = expected_goals_per_90 * 4;
-        const xPA = expected_assists_per_90 * 3;
-        const xCS = clean_sheets_per_90 * 5;
-        const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
-        xP = xPG + xPA + xCS + pMP + (bonus/gameWeek); 
-    }
-    
+    let xP = getExpectedPoints(props, gameWeek);
 
     const playerStatus = (multi) => {
         let status = '';
@@ -148,6 +119,8 @@ export default function ElementCard(props) {
         return status;
     }
 
+    const teamShortName = (teams.find(o => o.code === team_code)).short_name
+
     return (
         
         <Link href={`#`} className={`flex flex-col items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700  dark:hover:bg-gray-700 mb-2`}>
@@ -157,7 +130,7 @@ export default function ElementCard(props) {
                 {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h5> */}
                 <div className=''>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
-                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | { pos[element_type] }</p>
+                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | {teamShortName} | { pos[element_type] }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> { multiplier !== undefined && multiplier >= 0 ? playerStatus(multiplier) : '' } </p>
                     <div className="flex">
