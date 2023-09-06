@@ -2,7 +2,7 @@ import SelectPosition from '../../components/SelectPosition';
 import ElementCard from '../../components/ElementCard';
 import TotalExpectedPts from '../../components/TotalExpectedPts';
 import TotalExpectedPtsNext from '../../components/TotalExpectedPtsNext';
-import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies } from '../../services/index';
+import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId } from '../../services/index';
 import Image from 'next/image';
 
 export default async function Home() {
@@ -12,7 +12,6 @@ export default async function Home() {
     const nextGameWeek = bootstrap.events.find(o => o.is_next).id;
 
     let elements = bootstrap.elements;
-    const managerId = '471950';
     const manager = await getManagerInfo(managerId)
     const picksData = await getPicksData(managerId, `${gameWeek}`);
     
