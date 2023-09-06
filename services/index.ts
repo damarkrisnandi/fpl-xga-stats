@@ -43,7 +43,7 @@ export const getExpectedPoints = (element, gameWeek) => {
         xP = xPG + xPA + pMP + (bonus/gameWeek) + xOG; 
     }
     if (element_type === 3) {
-        const xPG = expected_goals_per_90 * 4;
+        const xPG = expected_goals_per_90 * 5;
         const xPA = expected_assists_per_90 * 3;
         const xCS = clean_sheets_per_90 * 1;
         const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
@@ -51,7 +51,7 @@ export const getExpectedPoints = (element, gameWeek) => {
         xP = xPG + xPA + xCS + pMP + (bonus/gameWeek) + xOG; 
     }
     if (element_type === 2) {
-        const xPG = expected_goals_per_90 * 4;
+        const xPG = expected_goals_per_90 * 6;
         const xPA = expected_assists_per_90 * 3;
         const xCS = clean_sheets_per_90 * 4;
         const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
@@ -61,7 +61,7 @@ export const getExpectedPoints = (element, gameWeek) => {
     }
 
     if (element_type === 1) {
-        const xPG = expected_goals_per_90 * 4;
+        const xPG = expected_goals_per_90 * 6;
         const xPA = expected_assists_per_90 * 3;
         const xCS = clean_sheets_per_90 * 5;
         const pMP = starts_per_90 >= 0.67 ? 2 : (starts_per_90 == 0 ? 0 : 1);
