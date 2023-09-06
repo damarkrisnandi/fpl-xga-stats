@@ -51,35 +51,35 @@ export default function HeaderMain() {
           <li>
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === 'my-team' && 'font-'}`} href='/my-team' onClick={() => {setSelected('my-team'); isOpen(!open)}}>My Team</Link>
+            ${selected === 'my-team' && 'font-semibold'}`} href='/my-team' onClick={() => {setSelected('my-team'); isOpen(!open)}}>My Team</Link>
           </li>
           <li>
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === '' && 'font-'}`} href='/' onClick={() => {setSelected(''); isOpen(!open)}}>All</Link>
+            ${selected === '' && 'font-semibold'}`} href='/' onClick={() => {setSelected(''); isOpen(!open)}}>All</Link>
           </li>
           <li>
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === 'fwd' && 'font-'}`} href='/fwd' onClick={() => {setSelected('fwd'); isOpen(!open)}}>Forward</Link>
+            ${selected === 'fwd' && 'font-semibold'}`} href='/fwd' onClick={() => {setSelected('fwd'); isOpen(!open)}}>Forward</Link>
           </li>
           <li>
             {/* <a href="#" className="flex py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">MOTM</a> */}
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === 'mid' && 'font-'}`} href='/mid' onClick={() => {setSelected('mid'); isOpen(!open)}}>Midfielder</Link>
+            ${selected === 'mid' && 'font-semibold'}`} href='/mid' onClick={() => {setSelected('mid'); isOpen(!open)}}>Midfielder</Link>
           </li>
           <li>
             {/* <a href="#" className="flex py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">MOTW</a> */}
             <Link className={`flex py-2 pl-3 pr-4  text-white rounde md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === 'def' && 'font-'}`} href='/def' onClick={() => {setSelected('def'); isOpen(!open)}}>Defender</Link>
+            ${selected === 'def' && 'font-semibold'}`} href='/def' onClick={() => {setSelected('def'); isOpen(!open)}}>Defender</Link>
           </li>
           <li>
             {/* <a href="#" className="flex py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">MOTW</a> */}
             <Link className={`flex py-2 pl-3 pr-4  text-white rounde md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
-            ${selected === 'gkp' && 'font-'}`} href='/gkp' onClick={() => {setSelected('gkp'); isOpen(!open)}}>GoalKeeper</Link>
+            ${selected === 'gkp' && 'font-semibold'}`} href='/gkp' onClick={() => {setSelected('gkp'); isOpen(!open)}}>GoalKeeper</Link>
           </li>
         </ul>
       </div>
