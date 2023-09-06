@@ -7,7 +7,7 @@ export default function Manager(props) {
             <div className={`flex items-center w-full p-6 bg-white dark:bg-gray-800 border border-gray-200 rounded-lg shadow hover:bg-gray-100  dark:border-gray-700 dark:hover:bg-gray-700`}>
                 {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> */}
                 <div className=''>
-                    <p className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{ team }</p>
+                    <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ team }</p>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white">{ manager }</p>
                 </div>
             </div>
