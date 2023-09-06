@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link'
+import { lowerBound } from '../services/index' 
 
 export default function TotalExpectedPtsNext(props) {
     const { totalXPoints } = props
@@ -11,7 +12,7 @@ export default function TotalExpectedPtsNext(props) {
                 <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total xP Next Gameweek</p>
                 <p className="mb-2 text-xs tracking-tight text-gray-900 dark:text-white">Click this card to get more info</p>
                 <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                    <div className="bg-yellow-700 text-xs font-medium text-blue-100 text-center p-0.5 rounded-full" style={{width: `100%`}}>{ `Expected: ${ totalXPoints } Pts`}</div>
+                    <div className={`${totalXPoints > lowerBound ? 'bg-blue-700' :  'bg-yellow-600'} text-xs font-medium text-blue-100 text-center p-0.5 rounded-full`} style={{width: `100%`}}>{ `Expected: ${ totalXPoints } Pts`}</div>
                 </div>
                 </div>
             </div>

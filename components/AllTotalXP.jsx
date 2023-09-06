@@ -1,11 +1,10 @@
+import { lowerBound } from '../services/index' 
 
 export default function TotalExpectedPtsNext(props) {
     const { totalXPointsList } = props
 
     const maxXp = Math.max(...totalXPointsList.map(xp => xp.totalXPoints))
     const minXp = Math.min(...totalXPointsList.map(xp => xp.totalXPoints))
-
-    const lowerBound = 80;
 
     return (
         <div className={`flex flex-col items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700  dark:hover:bg-gray-700 mb-2`}>

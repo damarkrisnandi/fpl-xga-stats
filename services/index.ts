@@ -7,6 +7,7 @@ const headers = {'Content-Type': 'application/json'};
  * managerId diisi 471950 as string
  */
 export const managerId = '471950';
+export const lowerBound = 80;
 
 const getResult = (url: string) => {
     const result = new Promise((resolve, reject) => {
