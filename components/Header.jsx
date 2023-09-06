@@ -19,7 +19,8 @@ export default function HeaderMain() {
   const pathname = usePathname();
 
   const mapHeader = new Map();
-  mapHeader.set('/my-team', 'My Team');
+    mapHeader.set('/my-team', 'My Team');
+    mapHeader.set('/my-team/all-xps', 'My Team/All xP Next-GW38');
     mapHeader.set('/', 'All');
     mapHeader.set('/fwd', 'Forward');
     mapHeader.set('/mid', 'Midfielder');
