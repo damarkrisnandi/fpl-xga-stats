@@ -146,13 +146,13 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
             if (home && home.length > 0) {
                 for (let h of home) {
                     if (dataEl.element_type === 4) {
-                        haIdxValue = (1 * h.homeOff / h.awayDef) + (0 * h.homeDef / h.awayOff);
+                        haIdxValue = ((1 * h.homeOff / h.awayDef) + (0 * h.homeDef / h.awayOff)) * (4 / h.awayDiff);
                     } else if (dataEl.element_type === 3) {
-                        haIdxValue = (0.7 * h.homeOff / h.awayDef) + (0.3 * h.homeDef / h.awayOff);
+                        haIdxValue = (((8/9) * h.homeOff / h.awayDef) + ((1/9) * h.homeDef / h.awayOff)) * (4 / h.awayDiff);
                     } else if (dataEl.element_type === 2) {
-                        haIdxValue = (0.1 * h.homeOff / h.awayDef) + (0.7 * h.homeDef / h.awayOff);
+                        haIdxValue = (((9/15) * h.homeOff / h.awayDef) + ((6/15) * h.homeDef / h.awayOff)) * (4 / h.awayDiff);
                     } else if (dataEl.element_type === 1) {
-                        haIdxValue = (0 * h.homeOff / h.awayDef) + (1 * h.homeDef / h.awayOff) ;
+                        haIdxValue = ((0 * h.homeOff / h.awayDef) + (1 * h.homeDef / h.awayOff)) * (4 / h.awayDiff);
                     }
                     totalXPoints += xP * pick.multiplier * haIdxValue;
                 }
@@ -161,13 +161,13 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
             if (away && away.length > 0) {
                 for (let a of away) {
                     if (dataEl.element_type === 4) {
-                        haIdxValue = (1 * a.homeOff / a.awayDef) + (0 * a.homeDef / a.awayOff);
+                        haIdxValue = ((1 * a.homeOff / a.awayDef) + (0 * a.homeDef / a.awayOff)) * (4 / a.homeDiff);
                     } else if (dataEl.element_type === 3) {
-                        haIdxValue = ((8/9) * a.homeOff / a.awayDef) + ((1/9) * a.homeDef / a.awayOff);
+                        haIdxValue = (((8/9) * a.homeOff / a.awayDef) + ((1/9) * a.homeDef / a.awayOff)) * (4 / a.homeDiff);
                     } else if (dataEl.element_type === 2) {
-                        haIdxValue = ((9/15) * a.homeOff / a.awayDef) + ((6/15) * a.homeDef / a.awayOff);
+                        haIdxValue = (((9/15) * a.homeOff / a.awayDef) + ((6/15) * a.homeDef / a.awayOff)) * (4 / a.homeDiff);
                     } else if (dataEl.element_type === 1) {
-                        haIdxValue = (0 * a.homeOff / a.awayDef) + (1 * a.homeDef / a.awayOff) ;
+                        haIdxValue = ((0 * a.homeOff / a.awayDef) + (1 * a.homeDef / a.awayOff)) * (4 / a.homeDiff);
                     }
                 }
                 totalXPoints += xP * pick.multiplier * haIdxValue;
