@@ -1,6 +1,7 @@
 import SelectPosition from '../../components/SelectPosition';
 import ElementCard from '../../components/ElementCard';
 import TotalExpectedPts from '../../components/TotalExpectedPts';
+import Manager from '../../components/Manager';
 import TotalExpectedPtsNext from '../../components/TotalExpectedPtsNext';
 import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId } from '../../services/index';
 import Image from 'next/image';
@@ -33,6 +34,10 @@ export default async function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="mt-24 w-11/12">
+            <Manager 
+                manager={`${manager.player_first_name} ${manager.player_last_name}`}
+                team={ manager.name }
+            />
             <TotalExpectedPts 
                 totalXPoints={xPCurrent.toFixed(2)}
                 points={manager.summary_event_points}
