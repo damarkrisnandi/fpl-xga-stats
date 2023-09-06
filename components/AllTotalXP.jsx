@@ -13,7 +13,7 @@ export default function TotalExpectedPtsNext(props) {
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total xP Next Gameweek until GW38</p>
                     {totalXPointsList.map(xp => (
                         <div className="w-full mb-1 bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div className={`${xp.totalXPoints > 75 ? (xp.totalXPoints === maxXp ? 'bg-fuchsia-800' : 'bg-blue-700') : (xp.totalXPoints === minXp ? 'bg-red-700' : 'bg-orange-700')} bg-yellow-700 text-xs font-medium text-blue-100 text-center p-0.5 rounded-full`} style={{width: `${((xp.totalXPoints / maxXp) * 100) - 5}%`}}>{ `GW${xp.gameWeek}: ${ (xp.totalXPoints).toFixed(2) } Pts`}</div>
+                            <div className={`${xp.totalXPoints > 75 ? (xp.totalXPoints === maxXp ? 'bg-fuchsia-800' : 'bg-blue-700') : (xp.totalXPoints === minXp ? 'bg-red-700' : 'bg-orange-700')} text-xs font-medium text-blue-100 text-center p-0.5 rounded-full`} style={{width: `${((xp.totalXPoints / maxXp) * 100) - 5}%`}}>{ `GW${xp.gameWeek}: ${ (xp.totalXPoints).toFixed(2) } Pts`}</div>
                         </div>
                     ))}
                     </div>
