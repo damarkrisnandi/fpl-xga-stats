@@ -40,7 +40,7 @@ export default async function Home() {
             />
             <TotalExpectedPts 
                 totalXPoints={xPCurrent.toFixed(2)}
-                points={manager.summary_event_points}
+                points={picksData.entry_history.points}
             />
             <TotalExpectedPtsNext 
                 totalXPoints={xPNext.toFixed(2)}
