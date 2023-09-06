@@ -29,7 +29,7 @@ export default function TotalExpectedPtsNext(props) {
                     {totalXPointsList.map(xp => (
                         <div className="w-full mb-1 bg-gray-200 rounded-full dark:bg-gray-700">
                             <div className={`${xp.totalXPoints > lowerBound ? (xp.totalXPoints === maxXp ? 'bg-fuchsia-800' : 'bg-blue-700') : (xp.totalXPoints === minXp ? 'bg-red-700' : 'bg-yellow-600')} text-xs font-medium text-blue-100 text-center p-0.5 rounded-full transition-all duration-700 
-                ease-out`} style={{width: `${(((xp.totalXPoints / maxXp) * 100) - 5)*width}%`}}>{ width > 0.5 && `GW${xp.gameWeek}: ${ (xp.totalXPoints).toFixed(2) } Pts`}</div>
+                ease-out`} style={{width: `${(((xp.totalXPoints / maxXp) * 100) - 5)*width}%`}}>{ width === 1 && `GW${xp.gameWeek}: ${ (xp.totalXPoints).toFixed(2) } Pts`}</div>
                         </div>
                     ))}
                     </div>
