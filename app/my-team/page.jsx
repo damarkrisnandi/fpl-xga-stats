@@ -41,6 +41,7 @@ export default async function Home() {
             <TotalExpectedPts 
                 totalXPoints={xPCurrent.toFixed(2)}
                 points={picksData.entry_history.points}
+                gameWeek={gameWeek}
             />
             <TotalExpectedPtsNext 
                 totalXPoints={xPNext.toFixed(2)}
