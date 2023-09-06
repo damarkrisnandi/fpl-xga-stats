@@ -14,7 +14,7 @@ export default async function Home() {
     let elements = bootstrap.elements;
     const managerId = '471950';
     const manager = await getManagerInfo(managerId)
-    const picksData = await getPicksData(managerId, `${manager.current_event}`);
+    const picksData = await getPicksData(managerId, `${gameWeek}`);
     
     
     
@@ -23,8 +23,8 @@ export default async function Home() {
 
 
     const fixtures = Object.values(await getFixtures());
-    const dataCurrentTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, picksData, fixtures);
-    const dataNextTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek + 1, picksData, fixtures); 
+    const dataCurrentTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 0, picksData, fixtures);
+    const dataNextTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 1, picksData, fixtures); 
     const xPCurrent = dataCurrentTeamAndXp.totalXPoints;
     myTeam = dataCurrentTeamAndXp.myTeam;
     const xPNext = dataNextTeamAndXp.totalXPoints

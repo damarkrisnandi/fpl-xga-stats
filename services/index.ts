@@ -111,8 +111,8 @@ export const getExpectedPoints = (element, gameWeek) => {
     return xP;
 }
 
-export const getTotalXPMultiplies = (bootstrap, gameWeek, picksData, fixtures) => {
-    const currentFixtures = fixtures.filter(data => data.event === gameWeek);
+export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fixtures) => {
+    const currentFixtures = fixtures.filter(data => data.event === gameWeek + deltaGW);
     const haIndexData = []
     const { elements, teams } = bootstrap;
     for (let f of currentFixtures) {
@@ -139,28 +139,39 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, picksData, fixtures) =
             myTeam.push({...dataEl, multiplier: pick.multiplier})
 
             const xP = getExpectedPoints(dataEl, gameWeek);
-            const home = haIndexData.find(ha => ha.home === dataEl.team);
-            const away = haIndexData.find(ha => ha.away === dataEl.team);
+            const home = haIndexData.filter(ha => ha.home === dataEl.team);
+            const away = haIndexData.filter(ha => ha.away === dataEl.team);
 
-            const defences = [1, 2];
-            const attacks = [3, 4];
             let haIdxValue = 1;
-            if (home) {
-                const haIdx = haIndexData.find(ha => ha.home === dataEl.team);
-                if (attacks.includes(dataEl.element_type)) {
-                    haIdxValue = haIdx.homeOff / haIdx.awayDef ;
-                } else {
-                    haIdxValue = haIdx.homeDef / haIdx.awayOff;
+            if (home && home.length > 0) {
+                for (let h of home) {
+                    if (dataEl.element_type === 4) {
+                        haIdxValue = (1 * h.homeOff / h.awayDef) + (0 * h.homeDef / h.awayOff);
+                    } else if (dataEl.element_type === 3) {
+                        haIdxValue = (0.7 * h.homeOff / h.awayDef) + (0.3 * h.homeDef / h.awayOff);
+                    } else if (dataEl.element_type === 2) {
+                        haIdxValue = (0.1 * h.homeOff / h.awayDef) + (0.7 * h.homeDef / h.awayOff);
+                    } else if (dataEl.element_type === 1) {
+                        haIdxValue = (0 * h.homeOff / h.awayDef) + (1 * h.homeDef / h.awayOff) ;
+                    }
+                    totalXPoints += xP * pick.multiplier * haIdxValue;
                 }
-            } else {
-                const haIdx = haIndexData.find(ha => ha.away === dataEl.team);
-                if (attacks.includes(dataEl.element_type)) {
-                    haIdxValue = haIdx.awayOff / haIdx.homeDef;
-                } else {
-                    haIdxValue = haIdx.awayDef / haIdx.homeOff;
+            } 
+            
+            if (away && away.length > 0) {
+                for (let a of away) {
+                    if (dataEl.element_type === 4) {
+                        haIdxValue = (1 * a.homeOff / a.awayDef) + (0 * a.homeDef / a.awayOff);
+                    } else if (dataEl.element_type === 3) {
+                        haIdxValue = ((8/9) * a.homeOff / a.awayDef) + ((1/9) * a.homeDef / a.awayOff);
+                    } else if (dataEl.element_type === 2) {
+                        haIdxValue = ((9/15) * a.homeOff / a.awayDef) + ((6/15) * a.homeDef / a.awayOff);
+                    } else if (dataEl.element_type === 1) {
+                        haIdxValue = (0 * a.homeOff / a.awayDef) + (1 * a.homeDef / a.awayOff) ;
+                    }
                 }
+                totalXPoints += xP * pick.multiplier * haIdxValue;
             }
-            totalXPoints += xP * pick.multiplier * haIdxValue;
 
         }
     }   
