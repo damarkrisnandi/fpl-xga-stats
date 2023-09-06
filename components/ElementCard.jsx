@@ -95,7 +95,8 @@ export default function ElementCard(props) {
         teams,
 
         //data pick
-        multiplier
+        multiplier,
+        xPFinal
     } = props;
     const pos = {
         1:'GKP',
@@ -194,9 +195,9 @@ export default function ElementCard(props) {
                     {
                         multiplier ? (
                             <div className="flex font-semibold">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;xP {(xP * multiplier).toFixed(2)}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;xP {(xPFinal).toFixed(2)}</p>
                                 <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;P {event_points * multiplier}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points - xP) >= 0 ? '+' : ''}${((event_points - xP) * multiplier).toFixed(2)})`}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points * multiplier) - xPFinal >= 0 ? '+' : ''}${((event_points * multiplier) - xPFinal).toFixed(2)})`}</p>
                             </div>
                         ) : null
                     }

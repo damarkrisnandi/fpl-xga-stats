@@ -134,9 +134,9 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
     const myTeam = []
     let totalXPoints = 0;
     for (let pick of picksData.picks) {
+        let xPPerElement = 0;
         if (elements.find((o) => pick.element === o.id)) {
             const dataEl = elements.find((o) => pick.element === o.id);
-            myTeam.push({...dataEl, multiplier: pick.multiplier})
 
             const xP = getExpectedPoints(dataEl, gameWeek);
             const home = haIndexData.filter(ha => ha.home === dataEl.team);
@@ -155,6 +155,7 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
                         haIdxValue = ((0 * h.homeOff / h.awayDef) + (1 * h.homeDef / h.awayOff)) * (4 / h.awayDiff);
                     }
                     totalXPoints += xP * pick.multiplier * haIdxValue;
+                    xPPerElement += xP * pick.multiplier * haIdxValue;
                 }
             } 
             
@@ -171,7 +172,10 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
                     }
                 }
                 totalXPoints += xP * pick.multiplier * haIdxValue;
+                xPPerElement += xP * pick.multiplier * haIdxValue;
             }
+
+            myTeam.push({...dataEl, multiplier: pick.multiplier, xPFinal: xPPerElement})
 
         }
     }   
