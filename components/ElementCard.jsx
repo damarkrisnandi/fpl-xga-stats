@@ -140,10 +140,10 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
                             </div>
                             
                         ) : null
@@ -151,8 +151,8 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
-                                <p className="text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
                             </div>
                             
                         ) : null
@@ -160,8 +160,8 @@ export default function ElementCard(props) {
                     {
                         element_type != 1 ? (
                             <div className="flex">
-                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
-                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
+                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
+                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
                             </div>
 
                         ) : null
@@ -170,8 +170,8 @@ export default function ElementCard(props) {
                     {
                         element_type == 1 ? (
                             <div className="flex">
-                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
-                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
+                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
+                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
                             </div>
                             
                         ) : null
@@ -180,24 +180,24 @@ export default function ElementCard(props) {
                     {
                         element_type == 1 ? (
                             <div className="flex">
-                                <p className={`text-sm mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
+                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
                             </div>
                             
                         ) : null
                     }
 
-                    <div className="flex font-semibold">
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xP {(xP).toFixed(2)}</p>
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>P {event_points}</p>                
-                        <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points - xP) >= 0 ? '+' : ''}${(event_points - xP).toFixed(2)})`}</p>
+                    <div className="flex">
+                        <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xP {(xP).toFixed(2)}</p>
+                        <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>P {event_points}</p>                
+                        <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points - xP) >= 0 ? '+' : ''}${(event_points - xP).toFixed(2)})`}</p>
                     </div>
 
                     {
                         multiplier ? (
                             <div className="flex font-semibold">
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;xP {(xPFinal).toFixed(2)}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;P {event_points * multiplier}</p>
-                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${event_points - xP >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points * multiplier) - xPFinal >= 0 ? '+' : ''}${((event_points * multiplier) - xPFinal).toFixed(2)})`}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${(event_points * multiplier) - xPFinal >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;xP {(xPFinal).toFixed(2)}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${(event_points * multiplier) - xPFinal >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>&Sigma;P {event_points * multiplier}</p>
+                                <p className={`mr-2 mb-2 tracking-tight text-gray-900  ${(event_points * multiplier) - xPFinal >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}> {`(${(event_points * multiplier) - xPFinal >= 0 ? '+' : ''}${((event_points * multiplier) - xPFinal).toFixed(2)})`}</p>
                             </div>
                         ) : null
                     }
