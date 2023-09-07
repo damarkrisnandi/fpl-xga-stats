@@ -98,7 +98,6 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
 
     const myTeam = []
     let totalXPoints = 0;
-    console.log(picksData.picks)
     for (let pick of picksData.picks) {
         let xPPerElement = 0;
         if (elements.find((o) => pick.element === o.id)) {
