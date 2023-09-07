@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { lowerBound } from '../services/index' 
 
 export default function TotalExpectedPtsNext(props) {
-    const { totalXPointsList } = props;
+    const { totalXPointsList, customLB } = props;
     const [width, setWidth] = useState(0);
 
     useEffect((props) => {
@@ -28,7 +28,7 @@ export default function TotalExpectedPtsNext(props) {
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total xP Next Gameweek until GW38</p>
                     {totalXPointsList.map(xp => (
                         <div className="w-full mb-1 bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div className={`${xp.totalXPoints > lowerBound ? (xp.totalXPoints === maxXp ? 'bg-fuchsia-800' : 'bg-blue-700') : (xp.totalXPoints === minXp ? 'bg-red-700' : 'bg-yellow-600')} text-xs font-medium text-blue-100 text-center p-0.5 rounded-full transition-all duration-700 
+                            <div className={`${xp.totalXPoints > (customLB || lowerBound) ? (xp.totalXPoints === maxXp ? 'bg-fuchsia-800' : 'bg-blue-700') : (xp.totalXPoints === minXp ? 'bg-red-700' : 'bg-yellow-600')} text-xs font-medium text-blue-100 text-center p-0.5 rounded-full transition-all duration-700 
                 ease-out truncate`} style={{width: `${(((xp.totalXPoints / maxXp) * 100) - 5)*width}%`}}>{`GW${xp.gameWeek}: ${ (xp.totalXPoints).toFixed(2) } Pts`}</div>
                         </div>
                     ))}

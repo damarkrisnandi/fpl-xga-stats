@@ -7,7 +7,7 @@ const headers = {'Content-Type': 'application/json'};
  * managerId diisi 471950 as string
  */
 export const managerId = '471950';
-export const lowerBound = 80;
+export const lowerBound = 75;
 
 const getResult = (url: string) => {
     const result = new Promise((resolve, reject) => {
@@ -35,7 +35,7 @@ export const getLeagueData = async (leagueId: string, page: string) => await get
 
 export const getExpectedPoints = (element, gameWeek) => {
     let xP = 0;
-    const {element_type, bonus, expected_goals_per_90, expected_assists_per_90, starts_per_90, clean_sheets_per_90, own_goals, expected_goals_conceded_per_90} = element;
+    const {element_type, bonus, expected_goals_per_90, expected_assists_per_90, starts_per_90, clean_sheets_per_90, own_goals, expected_goals_conceded_per_90, minutes} = element;
     if (element_type === 4) {
         const xPG = expected_goals_per_90 * 4;
         const xPA = expected_assists_per_90 * 3;
@@ -71,6 +71,8 @@ export const getExpectedPoints = (element, gameWeek) => {
         xP = xPG + xPA + xCS + pMP + (bonus/gameWeek) + xOG + xGC; 
     }
 
+    xP = xP * (minutes / (90 * gameWeek))
+
     return xP;
 }
 
@@ -96,6 +98,7 @@ export const getTotalXPMultiplies = (bootstrap, gameWeek, deltaGW, picksData, fi
 
     const myTeam = []
     let totalXPoints = 0;
+    console.log(picksData.picks)
     for (let pick of picksData.picks) {
         let xPPerElement = 0;
         if (elements.find((o) => pick.element === o.id)) {
