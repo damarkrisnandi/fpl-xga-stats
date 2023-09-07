@@ -12,7 +12,7 @@ export default function TotalExpectedPtsNext(props) {
             // for (let i=0; i<10; i++) {
                 setTimeout(() => {
                     setWidth(1);
-                }, 1000);
+                }, 300);
             // }
         }
     })
