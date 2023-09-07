@@ -41,6 +41,7 @@ export default async function Home() {
             <SelectGameweek 
                 currentGameWeek={gameWeek}
                 selectGameWeek={gameWeek}
+                isUrlParent={true}
             />
             <AllTotalXP 
                 totalXPointsList={dataXpList}

@@ -3,14 +3,18 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 export default function SelectGameweek(props) {
-    const { totalXPoints, selectGameWeek, currentGameWeek } = props
+    const { totalXPoints, selectGameWeek, currentGameWeek, isUrlParent } = props
 
     const router = useRouter();
 
     const gameweeks = Array.from({length: currentGameWeek}, (_, i) => i + 1)
 
     const handleChange = (e) => {
-        router.push(`${e.target.value}`)
+        if (isUrlParent) {
+            router.push(`all-xps/${e.target.value}`)
+        } else {
+            router.push(`${e.target.value}`)
+        }
     }
     return (
         <div className={`flex flex-col items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700  dark:hover:bg-gray-700 mb-2`}>
