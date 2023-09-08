@@ -131,7 +131,7 @@ export default function ElementCard(props) {
                 {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h5> */}
                 <div className=''>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> {first_name} {second_name} </p>
-                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | {teamShortName} | { pos[element_type] }</p>
+                    <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | {teamShortName} | { pos[element_type] } | £{ (now_cost / 10).toFixed(1) }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> { multiplier !== undefined && multiplier >= 0 ? playerStatus(multiplier) : '' } </p>
                     <div className="flex">
