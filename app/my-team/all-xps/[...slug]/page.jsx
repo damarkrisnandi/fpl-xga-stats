@@ -27,7 +27,7 @@ export default async function AllXps(props) {
     for (let i = select - gameWeek; i <= 38 - gameWeek; i++) {
         const dataCurrentTeamAndXpNext = getTotalXPMultiplies(bootstrap, gameWeek, i, picksData, fixtures);
         const dataHist = currentHistory.find(o => o.event === gameWeek + i)
-        dataXpList.push({...dataCurrentTeamAndXpNext, gameWeek: gameWeek + i, actualPts: (dataHist ? dataHist.points : null) });
+        dataXpList.push({...dataCurrentTeamAndXpNext, gameWeek: gameWeek + i, actualPts: (dataHist && dataHist.event === select  ? dataHist.points : null) });
     }
     const dataNextTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 1, picksData, fixtures); 
     const xPCurrent = dataCurrentTeamAndXp.totalXPoints;
