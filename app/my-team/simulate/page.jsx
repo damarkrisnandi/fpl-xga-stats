@@ -2,6 +2,7 @@ import SelectPosition from '../../../components/SelectPosition';
 import ElementSimulateCard from '../../../components/ElementSimulateCard';
 import TotalExpectedPts from '../../../components/TotalExpectedPts';
 import Manager from '../../../components/Manager';
+import Recomendation from '../../../components/Recomendation';
 import TotalExpectedPtsNext from '../../../components/TotalExpectedPtsNext';
 import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId } from '../../../services/index';
 import Image from 'next/image';
@@ -23,7 +24,7 @@ export default async function Home() {
     for (let pick of picksData.picks) {
         pick.multiplier = pick.multiplier == 0 ? 1 : pick.multiplier;
     }
-    
+
     const fixtures = Object.values(await getFixtures());
     const dataCurrentTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 0, picksData, fixtures);
     const dataNextTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 1, picksData, fixtures); 
@@ -58,6 +59,7 @@ export default async function Home() {
                 picksData={picksData}
             />
             ))}
+            {/* <Recomendation /> */}
         </div>
         </main>
     )

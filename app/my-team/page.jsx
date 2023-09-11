@@ -2,6 +2,7 @@ import SelectPosition from '../../components/SelectPosition';
 import ElementCard from '../../components/ElementCard';
 import TotalExpectedPts from '../../components/TotalExpectedPts';
 import Manager from '../../components/Manager';
+import Recomendation from '../../components/Recomendation';
 import TotalExpectedPtsNext from '../../components/TotalExpectedPtsNext';
 import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId } from '../../services/index';
 import Image from 'next/image';
@@ -55,6 +56,7 @@ export default async function Home() {
                 nextGameWeek={nextGameWeek}
             />
             ))}
+            <Recomendation />
         </div>
         </main>
     )
