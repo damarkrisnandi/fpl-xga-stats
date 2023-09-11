@@ -134,53 +134,55 @@ export default function ElementCard(props) {
                     <p className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{ web_name } | {teamShortName} | { pos[element_type] } | £{ (now_cost / 10).toFixed(1) }</p>
                     <p className="mb-2 tracking-tight text-gray-900 "></p>
                     <p className="mb-2 text-sm tracking-tight text-gray-900 dark:text-white"> { multiplier !== undefined && multiplier >= 0 ? playerStatus(multiplier) : '' } </p>
+        
                     <div className="flex">
                     <p className="mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">MP {minutes}</p>
                     </div>
                     {
                         element_type != 1 ? (
-                            <div className="flex">
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                            <div className="relative flex overflow-x-hidden w-3/5">
+                                <div className=" animate-marquee whitespace-nowrap flex">
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
+                                </div>
+                                <div className="absolute top-0  animate-marquee2 whitespace-nowrap flex">
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG {expected_goals}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA {expected_assists}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xG90 {expected_goals_per_90}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">xA90 {expected_assists_per_90}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
+                                    <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
+                                </div>
                             </div>
                             
-                        ) : null
-                    }
-                    {
-                        element_type != 1 ? (
-                            <div className="flex">
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">G {goals_scored}</p>
-                                <p className="text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white">A {assists}</p>
-                            </div>
-                            
-                        ) : null
-                    }
-                    {
-                        element_type != 1 ? (
-                            <div className="flex">
-                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${goals_scored - expected_goals >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>G-xG {( goals_scored - expected_goals) > 0 ? '+' : ''}{(goals_scored - expected_goals).toFixed(2)}</p>
-                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${assists - expected_assists >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>A-xA {(assists - expected_assists) > 0 ? '+' : ''}{(assists - expected_assists).toFixed(2)}</p>
-                            </div>
-
                         ) : null
                     }
                     
                     {
                         element_type == 1 ? (
-                            <div className="flex">
-                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
-                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
-                            </div>
-                            
-                        ) : null
-                    }
-
-                    {
-                        element_type == 1 ? (
-                            <div className="flex">
-                                <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
+                            <div className="relative flex overflow-x-hidden w-3/5">
+                                <div className=" animate-marquee whitespace-nowrap flex">
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>xGC {expected_goals_conceded}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>xGC90 {expected_goals_conceded_per_90}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
+                                </div>
+                                <div className="absolute top-0  animate-marquee2 whitespace-nowrap flex">
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>xGC {expected_goals_conceded}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>xGC90 {expected_goals_conceded_per_90}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC {goals_conceded}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900 dark:text-white`}>GC90 {goals_conceded_per_90}</p>
+                                    <p className={`text-xs mr-2 mb-2 tracking-tight text-gray-900  ${(expected_goals_conceded - goals_conceded) >= 0 ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>xGC-GC {(expected_goals_conceded - goals_conceded) > 0 ? '+': ''}{(expected_goals_conceded - goals_conceded).toFixed(2)}</p>
+                                </div>
                             </div>
                             
                         ) : null
