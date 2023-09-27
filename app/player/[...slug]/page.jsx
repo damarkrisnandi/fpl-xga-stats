@@ -48,7 +48,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'xG vs Goals'}
                 subtitle={`Expected Goals vs Goals Scored`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 expecteds={elementPerMatch.map(m => m.expected_goals)}
                 points={elementPerMatch.map(m => m.goals_scored)}
                 /> 
@@ -61,7 +61,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'xA vs Assists'}
                 subtitle={`Expected Assists vs Assists`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 expecteds={elementPerMatch.map(m => m.expected_assists)}
                 points={elementPerMatch.map(m => m.assists)}
                 />
@@ -74,7 +74,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'xGI vs Goals + Assists'}
                 subtitle={`xGI = xG + xA`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 expecteds={elementPerMatch.map(m => m.expected_goal_involvements )}
                 points={elementPerMatch.map(m => m.assists + m.goals_scored)}
                 />
@@ -87,7 +87,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'xGC vs Goal Conceded'}
                 subtitle={`Expected Goal Conceded vs Goal Conceded`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 expecteds={elementPerMatch.map(m => m.expected_goals_conceded )}
                 points={elementPerMatch.map(m => m.goals_conceded)}
                 switchDelta={1}
@@ -101,7 +101,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'Saves'}
                 subtitle={`Saves Per Match`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 // expecteds={elementPerMatch.map(m => elementPerMatch[0].value / 10 )}
                 points={elementPerMatch.map(m => m.saves)}
                 hideExpected={true}
@@ -115,7 +115,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'Price Changes'}
                 subtitle={`Player value changes per Match`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 // expecteds={elementPerMatch.map(m => elementPerMatch[0].value / 10 )}
                 points={elementPerMatch.map(m => m.value / 10)}
                 hideExpected={true}
@@ -129,7 +129,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'MP'}
                 subtitle={`Minutes Played`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 // expecteds={elementPerMatch.map(m => 60)}
                 points={elementPerMatch.map(m => m.minutes)}
                 hideExpected={true}
@@ -143,7 +143,7 @@ export default async function Home(props) {
                 <DataLineChart 
                 title={'%Selected'}
                 subtitle={`Percentage player selected by Managers`}
-                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name} ${m.was_home ? '(H)' : '(A)'}`)}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
                 // expecteds={elementPerMatch.map(m => (m.selected*100/bootstrap.total_players).toFixed(2))}
                 points={elementPerMatch.map(m => (m.selected*100/bootstrap.total_players).toFixed(2))}
                 hideExpected={true}
