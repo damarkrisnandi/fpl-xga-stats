@@ -27,7 +27,7 @@ export default function HeaderMain() {
     mapHeader.set('/def', 'Defender');
     mapHeader.set('/gkp', 'GoalKeeper');
 
-  const title = pathname ? mapHeader.get(pathname) || '' : '';
+  const title = pathname ? mapHeader.get(pathname) || pathname : '';
   
   return (
         
