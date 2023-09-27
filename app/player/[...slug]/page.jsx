@@ -26,7 +26,8 @@ export default async function Home(props) {
     let myTeam = [];
 
     const elementFullData = await getElementSummary(props.params.slug[0]);
-    const elementPerMatch = elementFullData.history;
+    // only last 5 matches
+    const elementPerMatch = elementFullData.history.slice(-5);
 
     const fixtures = Object.values(await getFixtures());
     const dataCurrentTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 0, picksData, fixtures);
