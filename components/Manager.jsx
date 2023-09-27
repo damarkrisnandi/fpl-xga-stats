@@ -7,7 +7,7 @@ export default function Manager(props) {
         <Link href='/' className={`flex flex-col items-center justify-between bg-white border border-gray-200 rounded-tl-lg rounded-tr-lg rounded-br-none rounded-bl-none shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-2`}>
             {/* <Image className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={imgUrl} alt="" width={150} height={150}/> */}
             
-            <div className={`flex items-center w-full p-6 bg-white dark:bg-gray-800 border border-gray-200 shadow rounded-tl-lg rounded-tr-lg rounded-br-none rounded-bl-none hover:bg-gray-100  dark:border-gray-700 dark:hover:bg-gray-700`}>
+            <div className={`flex items-center w-full p-6 bg-white dark:bg-gray-800 border border-gray-200 shadow rounded-lg hover:bg-gray-100  dark:border-gray-700 dark:hover:bg-gray-700`}>
                 {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> */}
                 <div className=''>
                     <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ team }</p>

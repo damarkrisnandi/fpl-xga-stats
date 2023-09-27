@@ -43,18 +43,18 @@ export default async function Home(props) {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="mt-24 w-11/12">
-            <div className="w-11/12 fixed">
+            {/* <div className="w-11/12 fixed"> */}
                 <Manager 
                     manager={`${element.first_name} ${element.second_name}'s StatCards`}
                     team={ element.web_name }
                 />
 
-            </div>
+            {/* </div> */}
             {/* <AllTotalXP 
                 totalXPointsList={dataXpList}
                 customLB={customLB}
             /> */}
-            <div className="w-full mt-11">
+            <div className="w-full">
 
                 <DataLineChart 
                 title={'xG vs Goals'}
