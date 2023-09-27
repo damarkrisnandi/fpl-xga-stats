@@ -82,7 +82,7 @@ export default function DataLineChart(props) {
                     {surplus > 0 ? '+' : ''}{surplus.toFixed(2)}
                 </div>
             </div>
-            <ApexChart type="line" options={option} series={series} height={300} />
+            <ApexChart type="line" options={option} series={series} height={200} />
             <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5">
                 <div className="flex justify-between items-center pt-5">
                 
