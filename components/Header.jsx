@@ -48,11 +48,11 @@ export default function HeaderMain() {
       </div>
       <div className={`items-center justify-between ${open ? 'transition duration-300' : 'transition duration-300 hidden'} w-full md:flex md:w-auto md:order-1`} id="navbar-sticky">
         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
-          <li>
+          {/* <li>
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
             ${selected === 'my-team' && 'font-bold'}`} href='/my-team' onClick={() => {setSelected('my-team'); isOpen(!open)}}>My Team</Link>
-          </li>
+          </li> */}
           <li>
             <Link className={`flex py-2 pl-3 pr-4  text-white rounded md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 
             transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-100 duration-300
