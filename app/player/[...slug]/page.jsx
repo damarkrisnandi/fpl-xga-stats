@@ -54,23 +54,31 @@ export default async function Home(props) {
             <DataLineChart 
             title={'xG vs Goals'}
             subtitle={`${element.first_name} ${element.second_name}`}
-            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
             expecteds={elementPerMatch.map(m => m.expected_goals)}
             points={elementPerMatch.map(m => m.goals_scored)}
             />
             <DataLineChart 
             title={'xA vs Assists'}
             subtitle={`${element.first_name} ${element.second_name}`}
-            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
             expecteds={elementPerMatch.map(m => m.expected_assists)}
             points={elementPerMatch.map(m => m.assists)}
             />
             <DataLineChart 
-            title={'xGI vs G+A'}
+            title={'xGI vs Goals + Assists'}
             subtitle={`${element.first_name} ${element.second_name}`}
-            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
             expecteds={elementPerMatch.map(m => m.expected_goal_involvements )}
             points={elementPerMatch.map(m => m.assists + m.goals_scored)}
+            />
+            <DataLineChart 
+            title={'xGC vs Goal Conceded'}
+            subtitle={`${element.first_name} ${element.second_name}`}
+            categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
+            expecteds={elementPerMatch.map(m => m.expected_goals_conceded )}
+            points={elementPerMatch.map(m => m.goals_conceded)}
+            switchDelta={1}
             />
         </div>
         </main>

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function DataLineChart(props) {
-    const {title, subtitle, categories, expecteds, points} = props;
+    const {title, subtitle, categories, expecteds, points, switchDelta} = props;
     const option = {
         chart: {
             height: "100%",
@@ -19,9 +19,9 @@ export default function DataLineChart(props) {
         },
         xaxis: {
             categories,
-            labels: {
-                show: false,
-            },
+            // labels: {
+            //     show: false,
+            // },
             axisBorder: {
                 show: false,
             },
@@ -55,14 +55,19 @@ export default function DataLineChart(props) {
 
     let surplus = 0
     for (let i = 0; i< categories.length; i++) {
-        surplus += points[i];
-        surplus -= expecteds[i];
+        if (switchDelta) {
+            surplus += parseFloat(expecteds[i]);
+            surplus -= parseFloat(points[i]);
+        } else {
+            surplus += parseFloat(points[i]);
+            surplus -= parseFloat(expecteds[i]);
+        }
     } 
     return (
-        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mb-2">
+        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 md:p-6 mb-2">
             <div className="flex justify-between mb-5">
                 <div>
-                <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">{title}</h5>
+                <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-gray-600 pb-2">{title}</h5>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">{subtitle}</p>
                 </div>
                 <div
