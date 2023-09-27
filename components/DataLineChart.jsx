@@ -71,7 +71,7 @@ export default function DataLineChart(props) {
         }
     } 
     return (
-        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 md:p-6 mb-2">
+        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 pt-16 md:p-6 mb-2">
             <div className="flex justify-between mb-5">
                 <div>
                 <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-gray-600 pb-2">{title}</h5>
