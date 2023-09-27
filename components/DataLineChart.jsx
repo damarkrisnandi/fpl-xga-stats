@@ -44,6 +44,11 @@ export default function DataLineChart(props) {
               cssClass: 'text-xs text-white font-medium'
             },
         },
+        grid: {
+            padding: {
+              left: 40
+            }
+        }
         
       }
 
