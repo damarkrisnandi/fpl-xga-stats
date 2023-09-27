@@ -1,7 +1,8 @@
 import Manager from '../../../components/Manager';
 import AllTotalXP from '../../../components/AllTotalXP';
-import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId } from '../../../services/index';
+import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId, getElementSummary } from '../../../services/index';
 import Image from 'next/image';
+import DataLineChart from '../../../components/DataLineChart';
 
 export default async function Home(props) {
     const bootstrap = (await getBootstrap());
@@ -23,6 +24,9 @@ export default async function Home(props) {
 
     let myTeam = [];
 
+    const elementFullData = await getElementSummary(props.params.slug[0]);
+    const elementPerMatch = elementFullData.history;
+
     const fixtures = Object.values(await getFixtures());
     const dataCurrentTeamAndXp = getTotalXPMultiplies(bootstrap, gameWeek, 0, picksData, fixtures);
     const dataXpList = []
@@ -43,9 +47,30 @@ export default async function Home(props) {
                 manager={`${element.first_name} ${element.second_name}`}
                 team={ element.web_name }
             />
-            <AllTotalXP 
+            {/* <AllTotalXP 
                 totalXPointsList={dataXpList}
                 customLB={customLB}
+            /> */}
+            <DataLineChart 
+            title={'xG vs Goals'}
+            subtitle={`${element.first_name} ${element.second_name}`}
+            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            expecteds={elementPerMatch.map(m => m.expected_goals)}
+            points={elementPerMatch.map(m => m.goals_scored)}
+            />
+            <DataLineChart 
+            title={'xA vs Assists'}
+            subtitle={`${element.first_name} ${element.second_name}`}
+            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            expecteds={elementPerMatch.map(m => m.expected_assists)}
+            points={elementPerMatch.map(m => m.assists)}
+            />
+            <DataLineChart 
+            title={'xGI vs G+A'}
+            subtitle={`${element.first_name} ${element.second_name}`}
+            categories={elementPerMatch.map(m => `Match ${m.round}`)}
+            expecteds={elementPerMatch.map(m => m.expected_goal_involvements )}
+            points={elementPerMatch.map(m => m.assists + m.goals_scored)}
             />
         </div>
         </main>
