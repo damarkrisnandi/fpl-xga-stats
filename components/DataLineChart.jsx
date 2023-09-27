@@ -37,6 +37,13 @@ export default function DataLineChart(props) {
             // }
         }
         },
+        dataLabels: {
+            enabled: true,
+            // offsetX: 10,
+            style: {
+              cssClass: 'text-xs text-white font-medium'
+            },
+        },
         
       }
 
