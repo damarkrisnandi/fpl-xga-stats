@@ -2,9 +2,7 @@
 import { useState, useEffect } from 'react';
 export default function TabView(props) {
     const { defaultState, tabComponents } = props;
-    console.log(tabComponents)
     const [tabState, setTabState] = useState(defaultState);
-    console.log(tabState);
     return (
         <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 pt-5 md:p-6 mb-2">
             <div className="flex justify-between mb-5">
