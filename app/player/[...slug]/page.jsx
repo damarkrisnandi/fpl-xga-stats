@@ -80,6 +80,13 @@ export default async function Home(props) {
             points={elementPerMatch.map(m => m.goals_conceded)}
             switchDelta={1}
             />
+            <DataLineChart 
+            title={'Price Change'}
+            subtitle={`${element.first_name} ${element.second_name}`}
+            categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
+            expecteds={elementPerMatch.map(m => m.value / 10 )}
+            points={elementPerMatch.map(m => m.value / 10)}
+            />
         </div>
         </main>
     )

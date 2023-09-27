@@ -48,17 +48,17 @@ export default function DataLineChart(props) {
       }
 
     const series = [
-                {
-                  name: "Expected",
-                  data: expecteds,
-                  color: "#1A56DB",
-                },
-                {
-                  name: "Points",
-                  data: points,
-                  color: "#00A36C",
-                },
-              ]
+        {
+            name: "Expected",
+            data: expecteds,
+            color: "#1A56DB",
+        },
+        {
+            name: "Points",
+            data: points,
+            color: "#00A36C",
+        },
+    ]
 
     let surplus = 0
     for (let i = 0; i< categories.length; i++) {
