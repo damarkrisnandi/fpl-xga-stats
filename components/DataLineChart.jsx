@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function DataLineChart(props) {
-    const {title, subtitle, categories, expecteds, points, switchDelta} = props;
+    const {title, subtitle, categories, expecteds, points, switchDelta, hideExpected} = props;
     const option = {
         chart: {
             height: "100%",
@@ -47,7 +47,7 @@ export default function DataLineChart(props) {
         
       }
 
-    const series = [
+    const series = !hideExpected ? [
         {
             name: "Expected",
             data: expecteds,
@@ -58,18 +58,26 @@ export default function DataLineChart(props) {
             data: points,
             color: "#00A36C",
         },
+    ] : [
+        {
+            name: "Points",
+            data: points,
+            color: "#00A36C",
+        },
     ]
 
     let surplus = 0
-    for (let i = 0; i< categories.length; i++) {
-        if (switchDelta) {
-            surplus += parseFloat(expecteds[i]);
-            surplus -= parseFloat(points[i]);
-        } else {
-            surplus += parseFloat(points[i]);
-            surplus -= parseFloat(expecteds[i]);
-        }
-    } 
+    if (!hideExpected) {
+        for (let i = 0; i< categories.length; i++) {
+            if (switchDelta) {
+                surplus += parseFloat(expecteds[i]);
+                surplus -= parseFloat(points[i]);
+            } else {
+                surplus += parseFloat(points[i]);
+                surplus -= parseFloat(expecteds[i]);
+            }
+        } 
+    }
     return (
         <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 pt-5 md:p-6 mb-2">
             <div className="flex justify-between mb-5">
@@ -77,10 +85,12 @@ export default function DataLineChart(props) {
                 <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-gray-600 pb-2">{title}</h5>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">{subtitle}</p>
                 </div>
-                <div
-                className={`flex items-center px-2.5 py-0.5 text-base font-semibold ${surplus >= 0 ? 'text-green-500 dark:text-green-500' : 'text-red-500 dark:text-red-500'} text-center`}>
-                    {surplus > 0 ? '+' : ''}{surplus.toFixed(2)}
-                </div>
+                {!hideExpected ? (
+                    <div
+                    className={`flex items-center px-2.5 py-0.5 text-base font-semibold ${surplus >= 0 ? 'text-green-500 dark:text-green-500' : 'text-red-500 dark:text-red-500'} text-center`}>
+                        {surplus > 0 ? '+' : ''}{surplus.toFixed(2)}
+                    </div>
+                ) : null}
             </div>
             <ApexChart type="line" options={option} series={series} height={200} />
             <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5">

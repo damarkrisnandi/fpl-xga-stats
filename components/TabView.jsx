@@ -12,7 +12,9 @@ export default function TabView(props) {
                     <ul className="flex flex-wrap -mb-px">
                         {tabComponents.map(tab => (
                             <li className="mr-2" key={tab.tabState}>
-                                <button className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                                <button className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
+                                ${tab.tabState === tabState ? 'text-blue-700' : 'text-black'}
+                                `}
                                  onClick={() => {setTabState(tab.tabState)}}
                                 >{ tab.title }</button>
                             </li>

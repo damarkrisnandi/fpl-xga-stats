@@ -101,8 +101,9 @@ export default async function Home(props) {
                 title={'Price Changes'}
                 subtitle={`Player value per Gameweek based on TSB%`}
                 categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
-                expecteds={elementPerMatch.map(m => elementPerMatch[0].value / 10 )}
+                // expecteds={elementPerMatch.map(m => elementPerMatch[0].value / 10 )}
                 points={elementPerMatch.map(m => m.value / 10)}
+                hideExpected={true}
                 />
             )
         },
@@ -114,8 +115,9 @@ export default async function Home(props) {
                 title={'Minutes'}
                 subtitle={`At least 60 Mins to get 2 points + cleansheet points`}
                 categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
-                expecteds={elementPerMatch.map(m => 60)}
+                // expecteds={elementPerMatch.map(m => 60)}
                 points={elementPerMatch.map(m => m.minutes)}
+                hideExpected={true}
                 />
             )
         },
@@ -127,8 +129,9 @@ export default async function Home(props) {
                 title={'%Selected'}
                 subtitle={`Percentage player selected by Managers`}
                 categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}`)}
-                expecteds={elementPerMatch.map(m => (m.selected*100/bootstrap.total_players).toFixed(2))}
+                // expecteds={elementPerMatch.map(m => (m.selected*100/bootstrap.total_players).toFixed(2))}
                 points={elementPerMatch.map(m => (m.selected*100/bootstrap.total_players).toFixed(2))}
+                hideExpected={true}
                 />
             )
         }
