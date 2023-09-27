@@ -45,7 +45,7 @@ export default async function Home(props) {
         <div className="mt-24 w-11/12">
             <div className="w-11/12 fixed">
                 <Manager 
-                    manager={`${element.first_name} ${element.second_name}`}
+                    manager={`${element.first_name} ${element.second_name}'s StatCards`}
                     team={ element.web_name }
                 />
 
@@ -54,7 +54,7 @@ export default async function Home(props) {
                 totalXPointsList={dataXpList}
                 customLB={customLB}
             /> */}
-            <div className="w-full mt-32">
+            <div className="w-full mt-11">
 
                 <DataLineChart 
                 title={'xG vs Goals'}
