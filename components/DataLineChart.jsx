@@ -49,7 +49,7 @@ export default function DataLineChart(props) {
                 {
                   name: "Points",
                   data: points,
-                  color: "#355E3B",
+                  color: "#00A36C",
                 },
               ]
 
