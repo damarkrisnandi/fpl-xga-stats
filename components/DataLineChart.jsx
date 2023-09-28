@@ -20,13 +20,12 @@ export default function DataLineChart(props) {
         xaxis: {
             categories,
             labels: {
-                
-            },
-            axisBorder: {
-                show: false,
                 style: {
                    cssClass: 'text-gray-900 dark:text-white'
                 },
+            },
+            axisBorder: {
+                show: false,
             },
             axisTicks: {
                 show: false,
