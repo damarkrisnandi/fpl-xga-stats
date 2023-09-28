@@ -51,6 +51,9 @@ export default function DataLineChart(props) {
             padding: {
               left: 40
             }
+        },
+        tooltip: {
+            theme: 'dark',
         }
         
       }
