@@ -19,18 +19,19 @@ export default function DataLineChart(props) {
         },
         xaxis: {
             categories,
-            // labels: {
-            //     show: false,
-            // },
+            labels: {
+                
+            },
             axisBorder: {
                 show: false,
+                style: {
+                   cssClass: 'text-gray-900 dark:text-white'
+                },
             },
             axisTicks: {
                 show: false,
             },
-            style: {
-              cssClass: 'text-gray-900 dark:text-white'
-            },
+            
         },
         yaxis: {
         show: false,
