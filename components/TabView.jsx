@@ -11,7 +11,7 @@ export default function TabView(props) {
                         {tabComponents.map(tab => (
                             <li className="mr-2" key={tab.tabState}>
                                 <button className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-blue-700 hover:border-blue-700 dark:hover:text-blue-700
-                                ${tab.tabState === tabState ? 'text-blue-700' : 'text-black'}
+                                ${tab.tabState === tabState ? 'text-blue-700' : 'text-gray-900 dark:text-white'}
                                 `}
                                  onClick={() => {setTabState(tab.tabState)}}
                                 >{ tab.title }</button>
