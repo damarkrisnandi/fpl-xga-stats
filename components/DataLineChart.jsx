@@ -21,7 +21,7 @@ export default function DataLineChart(props) {
             categories,
             labels: {
                 style: {
-                   cssClass: 'text-gray-900 dark:text-white'
+                   cssClass: 'p-2 bg-white text-gray-900 dark:text-white'
                 },
             },
             axisBorder: {
