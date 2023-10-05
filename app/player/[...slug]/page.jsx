@@ -1,6 +1,6 @@
 import Manager from '../../../components/Manager';
 import AllTotalXP from '../../../components/AllTotalXP';
-import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId, getElementSummary } from '../../../services/index';
+import { getBootstrap, getManagerInfo, getPicksData, getFixtures, getTotalXPMultiplies, managerId, getElementSummary, getExpectedPoints } from '../../../services/index';
 import Image from 'next/image';
 import DataLineChart from '../../../components/DataLineChart';
 import TabView from '../../../components/TabView';
@@ -105,6 +105,33 @@ export default async function Home(props) {
                 // expecteds={elementPerMatch.map(m => elementPerMatch[0].value / 10 )}
                 points={elementPerMatch.map(m => m.saves)}
                 hideExpected={true}
+                />
+            )
+        },
+        {
+            tabState: 'xPvsP',
+            title: 'xPvsP',
+            component: (
+                <DataLineChart 
+                title={'xP vs Points'}
+                subtitle={`Expected Points vs Points`}
+                categories={elementPerMatch.map(m => `v ${teams.find(t => t.id === m.opponent_team).short_name}${m.was_home ? '(H)' : '(A)'}`)}
+                expecteds={elementPerMatch.map(m => {
+                    const elementData = {
+                        element_type: elements.find(e => e.id === m.element).element_type, 
+                        bonus: m.bonus, 
+                        expected_goals_per_90: m.expected_goals, 
+                        expected_assists_per_90: m.expected_assists, 
+                        starts_per_90: m.minutes/90, 
+                        clean_sheets_per_90: m.clean_sheets, 
+                        own_goals: m.own_goals, 
+                        expected_goals_conceded_per_90: m.expected_goals_conceded, 
+                        minutes: m.minutes
+                    };
+                    return (getExpectedPoints(elementData, 1)).toFixed(2);
+                } )}
+                points={elementPerMatch.map(m => m.total_points)}
+                
                 />
             )
         },
