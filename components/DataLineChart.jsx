@@ -19,15 +19,18 @@ export default function DataLineChart(props) {
         },
         xaxis: {
             categories,
-            // labels: {
-            //     show: false,
-            // },
+            labels: {
+                style: {
+                   cssClass: 'p-2 bg-white text-gray-900 dark:text-white'
+                },
+            },
             axisBorder: {
                 show: false,
             },
             axisTicks: {
                 show: false,
             },
+            
         },
         yaxis: {
         show: false,
@@ -48,6 +51,9 @@ export default function DataLineChart(props) {
             padding: {
               left: 40
             }
+        },
+        tooltip: {
+            theme: 'dark',
         }
         
       }
@@ -84,11 +90,11 @@ export default function DataLineChart(props) {
         } 
     }
     return (
-        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-200 p-4 pt-5 md:p-6 mb-2">
+        <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 pt-5 md:p-6 mb-2">
             <div className="flex justify-between mb-5">
                 <div>
-                <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-gray-600 pb-2">{title}</h5>
-                <p className="text-base font-normal text-gray-500 dark:text-gray-400">{subtitle}</p>
+                <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">{title}</h5>
+                <p className="text-base font-normal text-gray-700 dark:text-gray-300">{subtitle}</p>
                 </div>
                 {!hideExpected ? (
                     <div
