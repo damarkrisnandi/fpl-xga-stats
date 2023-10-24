@@ -11,7 +11,7 @@ export const lowerBound = 75;
 
 const getResult = (url: string) => {
     const result = new Promise((resolve, reject) => {
-        fetch(url, { next: { revalidate: 900 } })
+        fetch(`${url}${(url.includes('?') ? '&t=' : '?t=') + new Date().getTime()}`, { next: { revalidate: 900 } })
         .then(data => {
             data.json().then(json => {
                 resolve(json)
